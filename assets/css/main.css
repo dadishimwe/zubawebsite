@@ -260,6 +260,11 @@ h6 {
     padding: 0;
   }
 
+  /* Hide the mobile toggle on desktop */
+  .mobile-nav-toggle {
+    display: none;
+  }
+  
   .navmenu ul {
     margin: 0;
     padding: 0;
