@@ -845,7 +845,7 @@ section,
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  min-height: 80vh;
+  min-height: 55vh;
   overflow: hidden;
   display: flex;
   align-items: center;
