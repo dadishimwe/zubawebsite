@@ -192,3 +192,16 @@
   });
 
 })();
+
+//Notification
+function showNotification() {
+  const notification = document.getElementById('notification');
+  notification.classList.add('show');
+
+  // Hide notification after 3 seconds
+  setTimeout(() => {
+      notification.classList.remove('show');
+  }, 3000);
+}
+ // Show notification when page loads
+ window.addEventListener('load', showNotification);
