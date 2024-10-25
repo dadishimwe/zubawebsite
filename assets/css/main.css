@@ -2825,3 +2825,27 @@ button:disabled {
           margin-top: 20px;
       }
 /* ending for form decoration */
+/* start of notification */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: -300px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: right 3s ease-in-out;
+  width: 250px;
+  z-index: 1000;
+}
+
+.notification.show {
+  right: 20px;
+}
+
+.content_notification {
+  text-align: center;
+  margin-top: 50px;
+}
+/* ending of notification */
