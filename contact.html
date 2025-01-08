@@ -109,36 +109,63 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
-              <div class="row gy-4">
+    <form action="https://formsubmit.co/itsupport@zubabroadband.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
+        <!-- Honeypot to prevent spam -->
+        <input type="text" name="_honey" style="display: none">
+        
+        <!-- Disable captcha -->
+        <input type="hidden" name="_captcha" value="false">
+        
+        <!-- Success redirect -->
+        <input type="hidden" name="_next" value="https://zubabroadband.com/contact.html">
+        
+        <!-- Custom subject -->
+        <input type="hidden" name="_subject" value="New Contact Form Submission">
+        
+        <!-- CC emails -->
+        <input type="hidden" name="_cc" value="fred.rwigamba@zubabroadband.com,robert.fogler@zubabroadband.com,umutoni.amanda@zubabroadband.com">
 
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="4" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
+       <!-- BCC emails -->
+        <input type="hidden" name="_bcc" value="dadishimwe0@gmail.com">
+        
+        <!-- Template -->
+        <input type="hidden" name="_template" value="table">
+        
+        <!-- Auto-response -->
+        <input type="hidden" name="_autoresponse" value="Thank you for your message! We'll get back to you soon.">
+        
+        <!-- Custom replyto -->
+        <input type="hidden" name="_replyto">
+        
+        <div class="row gy-4">
+            <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="col-md-6">
+                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="col-md-12">
+                <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+            </div>
+            <div class="col-md-12">
+                <select name="department" class="form-control" required>
+                    <option value="">Select Department</option>
+                    <option value="Support">Support</option>
+                    <option value="Sales">Sales</option>
+                    <option value="General">General Inquiry</option>
+                </select>
+            </div>
+            <div class="col-md-12">
+                <textarea class="form-control" name="message" rows="4" placeholder="Message" required></textarea>
+            </div>
+            <div class="col-md-12 text-center">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+                <button type="submit">Send Message</button>
+            </div>
+        </div>
+    </form><!-- End Contact Form -->
 
         </div>
 
