@@ -132,32 +132,32 @@
           </div>
 
           <div class="col-lg-6">
-    <form action="https://formsubmit.co/itsupport@zubabroadband.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
-        <!-- Honeypot to prevent spam -->
+    <!--<form action="https://formsubmit.co/itsupport@zubabroadband.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
+        <!-- Honeypot to prevent spam --
         <input type="text" name="_honey" style="display: none">
         
-        <!-- Disable captcha -->
+        <!-- Disable captcha --
         <input type="hidden" name="_captcha" value="false">
         
-        <!-- Success redirect -->
+        <!-- Success redirect --
         <input type="hidden" name="_next" value="https://zubabroadband.com/contact.html">
         
-        <!-- Custom subject -->
+        <!-- Custom subject --
         <input type="hidden" name="_subject" value="New Contact Form Submission">
         
-        <!-- CC emails -->
+        <!-- CC emails --
         <input type="hidden" name="_cc" value="fred.rwigamba@zubabroadband.com,robert.fogler@zubabroadband.com,umutoni.amanda@zubabroadband.com">
 
-       <!-- BCC emails -->
+       <!-- BCC emails --
         <input type="hidden" name="_bcc" value="dadishimwe0@gmail.com">
         
-        <!-- Template -->
+        <!-- Template --
         <input type="hidden" name="_template" value="table">
         
-        <!-- Auto-response -->
+        <!-- Auto-response --
         <input type="hidden" name="_autoresponse" value="Thank you for your message! We'll get back to you soon.">
         
-        <!-- Custom replyto -->
+        <!-- Custom replyto --
         <input type="hidden" name="_replyto">
         
         <div class="row gy-4">
@@ -189,6 +189,80 @@
             </div>
         </div>
     </form><!-- End Contact Form -->
+            <form action="https://formsubmit.co/itsupport@zubabroadband.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="500" onsubmit="return validateMathQuestion()">
+    <!-- Honeypot to prevent spam -->
+    <input type="text" name="_honey" style="display: none">
+    
+    <!-- Disable captcha -->
+    <input type="hidden" name="_captcha" value="false">
+    
+    <!-- Success redirect -->
+    <input type="hidden" name="_next" value="https://zubabroadband.com/contact.html">
+    
+    <!-- Custom subject -->
+    <input type="hidden" name="_subject" value="New Contact Form Submission">
+    
+    <!-- CC emails -->
+    <input type="hidden" name="_cc" value="fred.rwigamba@zubabroadband.com,robert.fogler@zubabroadband.com,umutoni.amanda@zubabroadband.com">
+
+    <!-- BCC emails -->
+    <input type="hidden" name="_bcc" value="dadishimwe0@gmail.com">
+    
+    <!-- Template -->
+    <input type="hidden" name="_template" value="table">
+    
+    <!-- Auto-response -->
+    <input type="hidden" name="_autoresponse" value="Thank you for your message! We'll get back to you soon.">
+    
+    <!-- Custom replyto -->
+    <input type="hidden" name="_replyto">
+    
+    <div class="row gy-4">
+        <div class="col-md-6">
+            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="col-md-6">
+            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+        </div>
+        <div class="col-md-12">
+            <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+        </div>
+        <div class="col-md-12">
+            <select name="department" class="form-control" required>
+                <option value="">Select Department</option>
+                <option value="Support">Support</option>
+                <option value="Sales">Sales</option>
+                <option value="General">General Inquiry</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <textarea class="form-control" name="message" rows="4" placeholder="Message" required></textarea>
+        </div>
+        <!-- Math Question -->
+        <div class="col-md-12">
+            <label for="math-question">What is 3 + 5? (Anti-spam)</label>
+            <input type="text" id="math-question" class="form-control" placeholder="Answer" required>
+        </div>
+        <div class="col-md-12 text-center">
+            <div class="loading">Sending message...</div>
+            <div class="error-message">Sorry, there was an error sending your message. Please try again.</div>
+            <div class="sent-message">Your message has been sent successfully. Thank you!</div>
+            <button type="submit">Send Message</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function validateMathQuestion() {
+        const answer = document.getElementById("math-question").value.trim();
+        if (answer !== "8") { // The correct answer to "3 + 5"
+            alert("Please answer the math question correctly.");
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    }
+</script>
+
 
         </div>
 
