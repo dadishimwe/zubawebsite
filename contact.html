@@ -189,43 +189,41 @@
             </div>
         </div>
     </form><!-- End Contact Form -->
-            <form action="https://formsubmit.co/itsupport@zubabroadband.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="500" onsubmit="return validateMathQuestion()">
-    <!-- Honeypot to prevent spam -->
+   <form action="https://formsubmit.co/itsupport@zubabroadband.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="500" onsubmit="return validateForm()">
+    <!-- Existing honeypot -->
     <input type="text" name="_honey" style="display: none">
     
-    <!-- Disable captcha -->
+    <!-- Add timestamp validation -->
+    <input type="hidden" id="form-timestamp" name="timestamp">
+    
+    <!-- Existing configuration fields -->
     <input type="hidden" name="_captcha" value="false">
-    
-    <!-- Success redirect -->
     <input type="hidden" name="_next" value="https://zubabroadband.com/contact.html">
-    
-    <!-- Custom subject -->
     <input type="hidden" name="_subject" value="New Contact Form Submission">
-    
-    <!-- CC emails -->
-    <!--<input type="hidden" name="_cc" value="fred.rwigamba@zubabroadband.com,robert.fogler@zubabroadband.com,umutoni.amanda@zubabroadband.com">-->
-
-    <!-- BCC emails -->
     <input type="hidden" name="_bcc" value="dadishimwe0@gmail.com">
-    
-    <!-- Template -->
     <input type="hidden" name="_template" value="table">
-    
-    <!-- Auto-response -->
     <input type="hidden" name="_autoresponse" value="Thank you for your message! We'll get back to you soon.">
-    
-    <!-- Custom replyto -->
     <input type="hidden" name="_replyto">
     
     <div class="row gy-4">
+        <!-- Add invisible honeypot fields -->
+        <div style="display: none;">
+            <input type="text" name="website" tabindex="-1">
+            <input type="email" name="email_confirm" tabindex="-1">
+        </div>
+        
         <div class="col-md-6">
-            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+            <input type="text" name="name" class="form-control" placeholder="Your Name" required 
+                   pattern="^[A-Za-z\s]{2,50}$" 
+                   title="Please enter a valid name (2-50 characters, letters only)">
         </div>
         <div class="col-md-6">
-            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+            <input type="email" class="form-control" name="email" placeholder="Your Email" required
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
         </div>
         <div class="col-md-12">
-            <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+            <input type="text" class="form-control" name="subject" placeholder="Subject" required
+                   maxlength="100">
         </div>
         <div class="col-md-12">
             <select name="department" class="form-control" required>
@@ -236,90 +234,96 @@
             </select>
         </div>
         <div class="col-md-12">
-            <textarea class="form-control" name="message" rows="4" placeholder="Message" required></textarea>
+            <textarea class="form-control" name="message" rows="4" placeholder="Message" required
+                      minlength="10" maxlength="1000"></textarea>
         </div>
-        <!-- Math Question -->
+        
+        <!-- Enhanced math captcha -->
         <div class="col-md-12">
-            <label for="math-question">What is 3 + 5? (Anti-spam)</label>
-            <input type="text" id="math-question" class="form-control" placeholder="Answer" required>
+            <div id="math-captcha">
+                <!-- Will be populated by JavaScript -->
+            </div>
+            <input type="text" id="math-answer" class="form-control" placeholder="Enter the answer" required>
         </div>
+        
+        <!-- Add mouse movement tracking div -->
+        <div id="mouse-track" style="width: 100%; height: 50px; border: 1px solid #eee; margin: 10px 0;">
+            Move your mouse here
+        </div>
+        
         <div class="col-md-12 text-center">
             <div class="loading">Sending message...</div>
             <div class="error-message">Sorry, there was an error sending your message. Please try again.</div>
             <div class="sent-message">Your message has been sent successfully. Thank you!</div>
-            <button type="submit">Send Message</button>
+            <button type="submit" id="submit-button" disabled>Send Message</button>
         </div>
     </div>
 </form>
 
 <script>
-    function validateMathQuestion() {
-        const answer = document.getElementById("math-question").value.trim();
-        if (answer !== "8") { // The correct answer to "3 + 5"
-            alert("Please answer the math question correctly.");
-            return false; // Prevent form submission
-        }
-        return true; // Allow form submission
+let mouseEvents = 0;
+let mathAnswer = 0;
+let submitEnabled = false;
+
+// Generate random math problem
+function generateMathProblem() {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    mathAnswer = num1 + num2;
+    document.getElementById('math-captcha').innerHTML = 
+        `<label>What is ${num1} + ${num2}? (Anti-spam)</label>`;
+}
+
+// Track mouse movements
+document.getElementById('mouse-track').addEventListener('mousemove', function(e) {
+    mouseEvents++;
+    if (mouseEvents > 5 && !submitEnabled) {
+        submitEnabled = true;
+        document.getElementById('submit-button').disabled = false;
     }
+});
+
+// Set initial timestamp
+document.getElementById('form-timestamp').value = Date.now();
+
+function validateForm() {
+    // Check if the form was filled too quickly (less than 10 seconds)
+    const submissionTime = Date.now();
+    const startTime = parseInt(document.getElementById('form-timestamp').value);
+    if (submissionTime - startTime < 10000) {
+        console.log("Form filled too quickly");
+        return false;
+    }
+
+    // Validate math answer
+    const userAnswer = document.getElementById('math-answer').value.trim();
+    if (parseInt(userAnswer) !== mathAnswer) {
+        alert("Please answer the math question correctly.");
+        return false;
+    }
+
+    // Check honeypot fields
+    const honeypotFields = ['website', 'email_confirm', '_honey'];
+    for (const field of honeypotFields) {
+        const value = document.querySelector(`[name="${field}"]`).value;
+        if (value) {
+            console.log("Honeypot triggered");
+            return false;
+        }
+    }
+
+    // Check if mouse movements were detected
+    if (mouseEvents < 5) {
+        console.log("No mouse movement detected");
+        return false;
+    }
+
+    return true;
+}
+
+// Initialize the form
+generateMathProblem();
 </script>
-
-
-        </div>
-
-      </div>
-
-      <div class="mt-5" data-aos="fade-up" data-aos-delay="200">
-        <iframe style="border:0; width: 100%; height: 370px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.529344698914!2d30.08691000915886!3d-1.9408966980333207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca7a7453936fd%3A0xa7c9985a4f21ff24!2sZuba%20Broadband!5e0!3m2!1sen!2srw!4v1729883278326!5m2!1sen!2srw" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div><!-- End Google Maps -->
-
-    </section><!-- /Contact Section -->
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            // Get form elements
-            const form = this;
-            const loadingMessage = form.querySelector('.loading');
-            const errorMessage = form.querySelector('.error-message');
-            const sentMessage = form.querySelector('.sent-message');
-            const submitButton = form.querySelector('button[type="submit"]');
-
-            // Show loading state
-            loadingMessage.style.display = 'block';
-            errorMessage.style.display = 'none';
-            sentMessage.style.display = 'none';
-            form.classList.add('form-disabled');
-            submitButton.disabled = true;
-
-            // Use fetch to submit the form
-            fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form)
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Success
-                    loadingMessage.style.display = 'none';
-                    sentMessage.style.display = 'block';
-                    form.reset();
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            })
-            .catch(error => {
-                // If there's an error, assume the form was still submitted (FormSubmit behavior)
-                loadingMessage.style.display = 'none';
-                sentMessage.style.display = 'block';
-                form.reset();
-            })
-            .finally(() => {
-                // Re-enable form
-                form.classList.remove('form-disabled');
-                submitButton.disabled = false;
-            });
-
-            // Prevent default form submission
-            e.preventDefault();
-        });
-    </script>
 
   </main>
 
