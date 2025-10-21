@@ -93,6 +93,12 @@
     .submit-btn:disabled {
       background: #ccc;
       cursor: not-allowed;
+      opacity: 0.6;
+    }
+    
+    .form-disabled {
+      opacity: 0.6;
+      pointer-events: none;
     }
     
     .alert {
@@ -116,7 +122,7 @@
     }
     
     .interaction-area {
-      height: 120px;
+      height: 150px;
       background: white;
       border: 2px solid #ddd;
       border-radius: 8px;
@@ -139,6 +145,8 @@
       color: white;
       font-size: 12px;
       font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      border: 2px solid white;
     }
     
     .target-circle:hover {
@@ -220,7 +228,10 @@
             
             <!-- Status Messages -->
             <div id="loading-message" class="alert alert-info">
-              <span class="spinner"></span> Sending your message...
+              <div class="d-flex align-items-center">
+                <span class="spinner me-2"></span>
+                <span>Sending your message... Please wait, do not refresh the page.</span>
+              </div>
             </div>
             <div id="error-message" class="alert alert-danger"></div>
             <div id="success-message" class="alert alert-success">
@@ -386,21 +397,68 @@
       }
     }
 
-    // Initialize human verification
+    // Initialize human verification with collision detection
     function initializeVerification() {
       const area = document.getElementById('interactionArea');
       const circles = [];
+      const positions = [];
+      const circleSize = 30;
+      const minDistance = 45; // Minimum distance between circles to prevent overlap
+      
+      function isPositionValid(x, y) {
+        // Check boundaries
+        if (x < 5 || x > area.offsetWidth - circleSize - 5 ||
+            y < 5 || y > area.offsetHeight - circleSize - 5) {
+          return false;
+        }
+        
+        // Check distance from other circles
+        for (let pos of positions) {
+          const distance = Math.sqrt(Math.pow(x - pos.x, 2) + Math.pow(y - pos.y, 2));
+          if (distance < minDistance) {
+            return false;
+          }
+        }
+        return true;
+      }
+      
+      function getRandomPosition() {
+        let attempts = 0;
+        const maxAttempts = 100;
+        
+        while (attempts < maxAttempts) {
+          const x = Math.random() * (area.offsetWidth - circleSize - 10) + 5;
+          const y = Math.random() * (area.offsetHeight - circleSize - 10) + 5;
+          
+          if (isPositionValid(x, y)) {
+            return { x, y };
+          }
+          attempts++;
+        }
+        
+        // Fallback: distribute evenly if random placement fails
+        const index = positions.length;
+        return {
+          x: (index * 60) % (area.offsetWidth - circleSize),
+          y: Math.floor(index * 60 / area.offsetWidth) * 60
+        };
+      }
       
       for (let i = 1; i <= totalCircles; i++) {
+        const pos = getRandomPosition();
+        positions.push(pos);
+        
         const circle = document.createElement('div');
         circle.className = 'target-circle';
         circle.textContent = i;
         circle.dataset.number = i;
-        circle.style.left = Math.random() * (area.offsetWidth - 40) + 'px';
-        circle.style.top = Math.random() * (area.offsetHeight - 40) + 'px';
+        circle.style.left = pos.x + 'px';
+        circle.style.top = pos.y + 'px';
+        circle.style.zIndex = i; // Ensure proper stacking
         
         circle.addEventListener('click', function(e) {
           e.preventDefault();
+          e.stopPropagation();
           handleCircleClick(this);
         });
         
@@ -462,13 +520,18 @@
         return false;
       }
       
-      // Show loading state
+      // Show loading state immediately
       const submitBtn = document.getElementById('submitBtn');
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
       showMessage('loading', '');
       
+      // Disable all form inputs to prevent changes during submission
+      const formInputs = this.querySelectorAll('input, textarea, select, button');
+      formInputs.forEach(input => input.disabled = true);
+      
       // Form will submit naturally to FormSubmit.co
+      // The page will redirect, but in case of any delay, keep button disabled
     });
 
     // Message display functions
