@@ -567,3 +567,1005 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Zuba Broadband - Website - Contact</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    loading, .error-message, .sent-message {
+            display: none;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .loading {
+            background: #f4f4f4;
+            text-align: center;
+        }
+        .error-message {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+        .sent-message {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .form-disabled {
+            opacity: 0.7;
+            pointer-events: none;
+
+          .contact-section {
+      padding: 60px 0;
+    }
+    
+    .info-item {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+    
+    .info-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .info-item i {
+      font-size: 32px;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .info-item h3 {
+      color: var(--dark-bg);
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .info-item p, .info-item a {
+      color: #666;
+      text-decoration: none;
+    }
+    
+    .contact-form {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    }
+    
+    .form-control, .form-select {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      transition: border-color 0.3s;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(255, 77, 0, 0.1);
+    }
+    
+    .submit-btn {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 40px;
+      border-radius: 5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+    
+    .submit-btn:hover:not(:disabled) {
+      background: #e64500;
+    }
+    
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    
+    .form-disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    
+    .alert {
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      display: none;
+    }
+    
+    .alert.show {
+      display: block;
+    }
+    
+    .verification-box {
+      background: #f8f9fa;
+      border: 2px dashed #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    
+    .interaction-area {
+      height: 150px;
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      position: relative;
+      margin-top: 15px;
+      overflow: hidden;
+    }
+    
+    .target-circle {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      border: 2px solid white;
+    }
+    
+    .target-circle:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(255, 77, 0, 0.5);
+    }
+    
+    .progress-indicator {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: var(--primary-color);
+      transition: width 0.3s;
+      width: 0%;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+
+  
+</head>
+
+<body class="contact-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+         <img src="assets/img/zuba.png" alt="">
+        <h1 class="sitename">BROADBAND</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="info.html">Info</a></li>
+          <li><a href="contact.html" class="active">Contact Us</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container position-relative">
+        <h1 style="color:#ff4d00">Contact</h1>
+        <p>Our customer support team is available around the clock to assist you with any issues.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Contact</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Contact Section -->
+    <!--<section id="contact" class="contact section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+          <div class="col-lg-6 ">
+            <div class="row gy-4">
+
+              <div class="col-lg-12">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
+                  <i class="bi bi-geo-alt"></i>
+                  <h3 color="#181825">Address</h3>
+                  <p color="#181825">22 KG 548 Street, Kacyiru, Kigali, Rwanda</p>
+                </div>
+              </div><!-- End Info Item --
+
+              <div class="col-md-6">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bi bi-telephone"></i>
+                  <h3 color="#181825">Call Us: Online 24/7</h3>
+                  <p><a href="tel:+250790099777" color="#181825" text-decoration="none">(+250) 790 099 777</a></p>
+                </div>
+              </div><!-- End Info Item --
+
+              <div class="col-md-6">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
+                  <i class="bi bi-envelope"></i>
+                  <h3>Email Us: Quick response</h3>
+                  <p><a href="mailto:itsupport@zubabroadband.com" color="#181825" text-decoration="none">itsupport@zubabroadband.com</a></p>
+                </div>
+              </div><!-- End Info Item --
+
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <form action="https://formsubmit.co/itsupport@zubabroadband.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="500" onsubmit="return validateForm()">
+    <!-- Existing configuration --
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://zubabroadband.com/contact.html">
+    <input type="hidden" name="_subject" value="New Contact Form Submission">
+    <input type="hidden" name="_bcc" value="dadishimwe0@gmail.com">
+    <input type="hidden" name="_template" value="table">
+    
+    <!-- Enhanced tracking --
+    <input type="hidden" id="form-timestamp" name="timestamp">
+    <input type="hidden" id="typing-patterns" name="typing_patterns">
+    <input type="hidden" id="interaction-score" name="interaction_score">
+    
+    <div class="row gy-4">
+        <div class="col-md-6">
+            <input type="text" 
+                   name="name" 
+                   class="form-control" 
+                   placeholder="Your Name" 
+                   required
+                   pattern="^[A-Za-z\s'\-]{2,50}$"
+                   onkeyup="trackTyping(event)"
+                   data-field="name">
+        </div>
+        <div class="col-md-6">
+            <input type="email" 
+                   class="form-control" 
+                   name="email" 
+                   placeholder="Your Email" 
+                   required
+                   onkeyup="trackTyping(event)"
+                   data-field="email"
+                   pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+        </div>
+        <div class="col-md-12">
+            <input type="text" 
+                   class="form-control" 
+                   name="subject" 
+                   placeholder="Subject" 
+                   required
+                   onkeyup="trackTyping(event)"
+                   data-field="subject">
+        </div>
+        <div class="col-md-12">
+            <select name="department" 
+                    class="form-control" 
+                    required
+                    onchange="trackInteraction('department_selected')">
+                <option value="">Select Department</option>
+                <option value="Support">Support</option>
+                <option value="Sales">Sales</option>
+                <option value="General">General Inquiry</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <textarea class="form-control" 
+                      name="message" 
+                      rows="4" 
+                      placeholder="Message" 
+                      required
+                      onkeyup="trackTyping(event)"
+                      data-field="message"></textarea>
+        </div>
+        
+        //interactive verification
+        <div class="col-md-12">
+            <div id="verify-human" class="p-3 my-3 border rounded">
+                <p>Please interact with this box</p>
+                <div id="interaction-area" 
+                     style="height: 100px; 
+                            border: 1px solid #ddd; 
+                            position: relative;">
+                    <div id="target-circle" 
+                         style="position: absolute; 
+                                width: 20px; 
+                                height: 20px; 
+                                background: #007bff; 
+                                border-radius: 50%; 
+                                cursor: pointer;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 text-center">
+            <button type="submit" id="submit-button" disabled>Send Message</button>
+        </div>
+    </div>
+</form>
+
+<script>
+let typingPatterns = {
+    timestamps: [],
+    intervals: [],
+    backspaces: 0
+};
+let interactionScore = 0;
+let lastKeypressTime = null;
+
+/*Initialize form*/
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('form-timestamp').value = Date.now();
+    initializeInteractionTest();
+});
+
+function trackTyping(event) {
+    const currentTime = Date.now();
+    
+    /* Track typing patterns*/
+    if (lastKeypressTime) {
+        const interval = currentTime - lastKeypressTime;
+        typingPatterns.intervals.push(interval);
+    }
+    
+    /* Track backspaces (common in human typing)*/
+    if (event.key === 'Backspace') {
+        typingPatterns.backspaces++;
+    }
+    
+    /* Track timestamps*/
+    typingPatterns.timestamps.push(currentTime);
+    lastKeypressTime = currentTime;
+    
+    /* Update hidden field*/
+    document.getElementById('typing-patterns').value = JSON.stringify(typingPatterns);
+    
+    /* Check for bot patterns*/
+    validateTypingPatterns();
+}
+
+function validateTypingPatterns() {
+    if (typingPatterns.intervals.length > 5) {
+        // Check for too-consistent typing intervals (bot indicator)
+        const avgInterval = typingPatterns.intervals.reduce((a, b) => a + b) / typingPatterns.intervals.length;
+        const tooConsistent = typingPatterns.intervals.every(interval => 
+            Math.abs(interval - avgInterval) < 10
+        );
+        
+        if (tooConsistent) {
+            interactionScore -= 50;
+        }
+    }
+}
+
+function initializeInteractionTest() {
+    const target = document.getElementById('target-circle');
+    const area = document.getElementById('interaction-area');
+    let positions = generateRandomPositions(5);
+    let currentPosition = 0;
+    
+    function moveTarget() {
+        if (currentPosition < positions.length) {
+            target.style.left = positions[currentPosition].x + 'px';
+            target.style.top = positions[currentPosition].y + 'px';
+            currentPosition++;
+        } else {
+            interactionScore += 50;
+            updateSubmitButton();
+        }
+    }
+    
+    target.addEventListener('click', function(e) {
+        e.preventDefault();
+        moveTarget();
+        trackInteraction('circle_clicked');
+    });
+    
+    moveTarget(); // Initial position
+}
+
+function generateRandomPositions(count) {
+    const positions = [];
+    const area = document.getElementById('interaction-area');
+    const areaRect = area.getBoundingClientRect();
+    
+    for (let i = 0; i < count; i++) {
+        positions.push({
+            x: Math.random() * (areaRect.width - 20),
+            y: Math.random() * (areaRect.height - 20)
+        });
+    }
+    
+    return positions;
+}
+
+function trackInteraction(type) {
+    interactionScore += 10;
+    document.getElementById('interaction-score').value = interactionScore;
+    updateSubmitButton();
+}
+
+function updateSubmitButton() {
+    const submitButton = document.getElementById('submit-button');
+    submitButton.disabled = interactionScore < 70;
+}
+
+function validateForm() {
+    // Time spent validation
+    const startTime = parseInt(document.getElementById('form-timestamp').value);
+    const submissionTime = Date.now();
+    if (submissionTime - startTime < 15000) { // 15 seconds minimum
+        return false;
+    }
+    
+    /* Validate email format*/
+    const email = document.querySelector('input[name="email"]').value;
+    if (email === email.toUpperCase()) {
+        return false; // Reject all-caps emails
+    }
+    
+    /*Message language consistency check*/
+    const subject = document.querySelector('input[name="subject"]').value;
+    const message = document.querySelector('textarea[name="message"]').value;
+    if (detectLanguageMismatch(subject, message)) {
+        return false;
+    }
+    
+    return interactionScore >= 70;
+}
+
+function detectLanguageMismatch(subject, message) {
+    /* Simple language detection based on common patterns*/
+    const isEnglishSubject = /^[a-zA-Z\s]+$/.test(subject);
+    const hasNonEnglishChars = /[^\x00-\x7F]+/.test(message);
+    
+    return isEnglishSubject && hasNonEnglishChars;
+}
+</script> -->
+  <div class="contact-section">
+    <div class="container">
+      <div class="row">
+        <!-- Contact Information -->
+        <div class="col-lg-5">
+          <div class="info-item text-center">
+            <i class="bi bi-geo-alt"></i>
+            <h3>Address</h3>
+            <p>22 KG 548 Street<br>Kacyiru, Kigali, Rwanda</p>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="info-item text-center">
+                <i class="bi bi-telephone"></i>
+                <h3>Call Us 24/7</h3>
+                <p><a href="tel:+250790099777">(+250) 790 099 777</a></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-item text-center">
+                <i class="bi bi-envelope"></i>
+                <h3>Email Us</h3>
+                <p><a href="#" id="emailLink" data-user="itsupport" data-domain="zubabroadband.com">Click to reveal</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-lg-7">
+          <div class="contact-form">
+            <h3 class="mb-4">Send us a Message</h3>
+            
+            <!-- Status Messages -->
+            <div id="loading-message" class="alert alert-info">
+              <div class="d-flex align-items-center">
+                <span class="spinner me-2"></span>
+                <span>Sending your message... Please wait, do not refresh the page.</span>
+              </div>
+            </div>
+            <div id="error-message" class="alert alert-danger"></div>
+            <div id="success-message" class="alert alert-success">
+              <i class="bi bi-check-circle"></i> Your message has been sent successfully! We'll get back to you soon.
+            </div>
+            
+            <form id="contactForm" method="POST">
+              <!-- Form action will be set dynamically via JavaScript -->
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="https://zubabroadband.com/contact.html?success=1">
+              <input type="hidden" name="_subject" value="New Contact Form Submission - Zuba Broadband">
+              <input type="hidden" name="_template" value="table">
+              
+              <!-- Tracking Fields -->
+              <input type="hidden" id="formTimestamp" name="_form_timestamp">
+              <input type="hidden" id="verificationScore" name="_verification_score">
+              
+              <!-- Honeypot for bots (hidden field) -->
+              <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="text" 
+                         name="name" 
+                         class="form-control" 
+                         placeholder="Your Name *" 
+                         required
+                         pattern="^[A-Za-z\s'\-]{2,50}$"
+                         title="Please enter a valid name (2-50 characters)">
+                </div>
+                
+                <div class="col-md-6">
+                  <input type="email" 
+                         name="email" 
+                         class="form-control" 
+                         placeholder="Your Email *" 
+                         required
+                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                         title="Please enter a valid email address">
+                </div>
+              </div>
+              
+              <input type="tel" 
+                     name="phone" 
+                     class="form-control" 
+                     placeholder="Phone Number (Optional)"
+                     pattern="[\+]?[0-9]{10,15}">
+              
+              <input type="text" 
+                     name="subject" 
+                     class="form-control" 
+                     placeholder="Subject *" 
+                     required
+                     minlength="3"
+                     maxlength="100">
+              
+              <select name="department" class="form-select" required>
+                <option value="">Select Department *</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="Sales & New Connections">Sales & New Connections</option>
+                <option value="Billing & Accounts">Billing & Accounts</option>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Complaints">Complaints</option>
+              </select>
+              
+              <textarea name="message" 
+                        class="form-control" 
+                        rows="5" 
+                        placeholder="Your Message *" 
+                        required
+                        minlength="10"
+                        maxlength="1000"></textarea>
+              
+              <!-- Human Verification -->
+              <div class="verification-box">
+                <h5><i class="bi bi-shield-check"></i> Verify You're Human</h5>
+                <p class="mb-2">Click all the circles in order (1 → 5)</p>
+                <div class="interaction-area" id="interactionArea"></div>
+                <div class="progress-indicator">
+                  Progress: <span id="clickProgress">0/5</span>
+                  <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <button type="submit" class="submit-btn" id="submitBtn" disabled>
+                <i class="bi bi-send"></i> Send Message
+              </button>
+              
+              <p class="text-muted mt-3 mb-0" style="font-size: 12px;">
+                <i class="bi bi-info-circle"></i> Your information is secure and will only be used to respond to your inquiry.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Email obfuscation - protects from scrapers
+    const emailParts = {
+      user: 'sales',
+      domain: 'zubabroadband',
+      tld: 'com',
+      ccUser: 'itsupport',
+      ccDomain: 'zubabroadband'
+    };
+
+    // Build email addresses dynamically
+    function getEmail(type = 'main') {
+      if (type === 'cc') {
+        return emailParts.ccUser + '@' + emailParts.ccDomain + '.' + emailParts.tld;
+      }
+      return emailParts.user + '@' + emailParts.domain + '.' + emailParts.tld;
+    }
+
+    // Set up email link with obfuscation
+    document.addEventListener('DOMContentLoaded', function() {
+      const emailLink = document.getElementById('emailLink');
+      const email = getEmail();
+      
+      emailLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.href = 'mailto:' + email;
+        this.textContent = email;
+        // After first click, make it work as normal mailto link
+        setTimeout(() => {
+          emailLink.addEventListener('click', function(e) {
+            window.location.href = this.href;
+          });
+        }, 100);
+      });
+      
+      // Set form action dynamically
+      const form = document.getElementById('contactForm');
+      form.action = 'https://formsubmit.co/' + email;
+      
+      // Add CC field dynamically
+      const ccInput = document.createElement('input');
+      ccInput.type = 'hidden';
+      ccInput.name = '_cc';
+      ccInput.value = getEmail('cc');
+      form.appendChild(ccInput);
+      
+      document.getElementById('formTimestamp').value = new Date().toISOString();
+      initializeVerification();
+      checkURLForSuccess();
+    });
+
+    // Verification System
+    let verificationScore = 0;
+    let clickedCircles = 0;
+    const totalCircles = 5;
+    let startTime = Date.now();
+
+    // Check if returning from successful submission
+    function checkURLForSuccess() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('success') === '1') {
+        showMessage('success', 'Your message has been sent successfully! We\'ll get back to you soon.');
+      }
+    }
+
+    // Initialize human verification with collision detection
+    function initializeVerification() {
+      const area = document.getElementById('interactionArea');
+      const circles = [];
+      const positions = [];
+      const circleSize = 30;
+      const minDistance = 45; // Minimum distance between circles to prevent overlap
+      
+      function isPositionValid(x, y) {
+        // Check boundaries
+        if (x < 5 || x > area.offsetWidth - circleSize - 5 ||
+            y < 5 || y > area.offsetHeight - circleSize - 5) {
+          return false;
+        }
+        
+        // Check distance from other circles
+        for (let pos of positions) {
+          const distance = Math.sqrt(Math.pow(x - pos.x, 2) + Math.pow(y - pos.y, 2));
+          if (distance < minDistance) {
+            return false;
+          }
+        }
+        return true;
+      }
+      
+      function getRandomPosition() {
+        let attempts = 0;
+        const maxAttempts = 100;
+        
+        while (attempts < maxAttempts) {
+          const x = Math.random() * (area.offsetWidth - circleSize - 10) + 5;
+          const y = Math.random() * (area.offsetHeight - circleSize - 10) + 5;
+          
+          if (isPositionValid(x, y)) {
+            return { x, y };
+          }
+          attempts++;
+        }
+        
+        // Fallback: distribute evenly if random placement fails
+        const index = positions.length;
+        return {
+          x: (index * 60) % (area.offsetWidth - circleSize),
+          y: Math.floor(index * 60 / area.offsetWidth) * 60
+        };
+      }
+      
+      for (let i = 1; i <= totalCircles; i++) {
+        const pos = getRandomPosition();
+        positions.push(pos);
+        
+        const circle = document.createElement('div');
+        circle.className = 'target-circle';
+        circle.textContent = i;
+        circle.dataset.number = i;
+        circle.style.left = pos.x + 'px';
+        circle.style.top = pos.y + 'px';
+        circle.style.zIndex = i; // Ensure proper stacking
+        
+        circle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          handleCircleClick(this);
+        });
+        
+        area.appendChild(circle);
+        circles.push(circle);
+      }
+    }
+
+    function handleCircleClick(circle) {
+      const clickedNumber = parseInt(circle.dataset.number);
+      const expectedNumber = clickedCircles + 1;
+      
+      if (clickedNumber === expectedNumber) {
+        circle.style.background = '#28a745';
+        circle.style.pointerEvents = 'none';
+        clickedCircles++;
+        verificationScore += 20;
+        
+        updateProgress();
+        
+        if (clickedCircles === totalCircles) {
+          completeVerification();
+        }
+      } else {
+        // Wrong order - shake animation
+        circle.style.animation = 'shake 0.3s';
+        setTimeout(() => circle.style.animation = '', 300);
+      }
+    }
+
+    function updateProgress() {
+      document.getElementById('clickProgress').textContent = `${clickedCircles}/${totalCircles}`;
+      const percentage = (clickedCircles / totalCircles) * 100;
+      document.getElementById('progressFill').style.width = percentage + '%';
+    }
+
+    function completeVerification() {
+      const timeSpent = (Date.now() - startTime) / 1000;
+      if (timeSpent > 5) verificationScore += 10; // Bonus for taking time
+      
+      document.getElementById('verificationScore').value = verificationScore;
+      document.getElementById('submitBtn').disabled = false;
+      
+      showMessage('success', '✓ Verification complete! You can now submit the form.');
+      setTimeout(() => hideMessage('success'), 3000);
+    }
+
+    // Form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      if (verificationScore < 80) {
+        e.preventDefault();
+        showMessage('error', 'Please complete the verification first.');
+        return false;
+      }
+      
+      // Check honeypot field
+      if (document.querySelector('input[name="_gotcha"]').value !== '') {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Show loading state immediately
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+      showMessage('loading', '');
+      
+      // Disable all form inputs to prevent changes during submission
+      const formInputs = this.querySelectorAll('input, textarea, select, button');
+      formInputs.forEach(input => input.disabled = true);
+      
+      // Form will submit naturally to FormSubmit.co
+      // The page will redirect, but in case of any delay, keep button disabled
+    });
+
+    // Message display functions
+    function showMessage(type, text) {
+      hideAllMessages();
+      const messageId = type === 'loading' ? 'loading-message' : 
+                       type === 'error' ? 'error-message' : 'success-message';
+      const element = document.getElementById(messageId);
+      if (text) element.textContent = text;
+      element.classList.add('show');
+    }
+
+    function hideMessage(type) {
+      const messageId = type === 'loading' ? 'loading-message' : 
+                       type === 'error' ? 'error-message' : 'success-message';
+      document.getElementById(messageId).classList.remove('show');
+    }
+
+    function hideAllMessages() {
+      document.querySelectorAll('.alert').forEach(el => el.classList.remove('show'));
+    }
+
+    // Add shake animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="d-flex align-items-center">
+            <h4><span class="sitename">Zuba Broadband</span></h4>
+          </a>
+          <div class="footer-contact pt-3">
+              <p><a href="https://maps.app.goo.gl/XyGCwegonbhRqSCr6" target="_blank" style="color: white; font-size: 12px;">22 KG 548 Street</a></p>
+              <p><a href="https://maps.app.goo.gl/XyGCwegonbhRqSCr6" target="_blank" style="color: white; font-size: 12px;">Kacyiru, Kigali, Rwanda</a></p>
+              <p class="mt-3"><strong>Phone:</strong> <span><a href="tel:+250790099777" style="color: white; font-size: 12px;" text-decoration="none">(+250) 790 099 777</a></span></p>
+              <p><strong>Email:</strong> <span><a href="mailto:sales@zubabroadband.com" style="color: white; font-size: 12px;" text-decoration="none">sales@zubabroadband.com</a></span></p>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="index.html">Home</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="about.html">About us</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Services</a></li>
+            <!--<li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>-->
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Starlink Services</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Network Consultancy</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Maintenance</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="services.html">Customer Service</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12">
+          <h4>Follow Us</h4>
+          <p>We are available on the following platforms.</p>
+          <div class="social-links d-flex">
+            <a href="https://x.com/zubabroadband?t=7JQL-WwauLlbQPPJ5pktbQ&s=09"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://youtube.com/@dadi-s7x?si=BoYx4570CAz5o2zI"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.instagram.com/_zuba_broadband?igsh=bWs0ZGw2ZTBlM3Az"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/zuba-broadband-911621328?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BwOQyFiYNQsShM2X%2BMSeZtw%3D%3D"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Zuba Broadband</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        Designed by <a href="https://dadishimwe.github.io/dadishimwe/">dadishimwe</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WXX2YP9XYT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WXX2YP9XYT');
+</script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
