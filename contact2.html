@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Zuba Broadband - Contact Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-color: #ff4d00;
+      --dark-bg: #181825;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f8f9fa;
+    }
+    
+    .contact-section {
+      padding: 60px 0;
+    }
+    
+    .info-item {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+    
+    .info-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .info-item i {
+      font-size: 32px;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .info-item h3 {
+      color: var(--dark-bg);
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .info-item p, .info-item a {
+      color: #666;
+      text-decoration: none;
+    }
+    
+    .contact-form {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    }
+    
+    .form-control, .form-select {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      transition: border-color 0.3s;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(255, 77, 0, 0.1);
+    }
+    
+    .submit-btn {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 40px;
+      border-radius: 5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+    
+    .submit-btn:hover:not(:disabled) {
+      background: #e64500;
+    }
+    
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .alert {
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      display: none;
+    }
+    
+    .alert.show {
+      display: block;
+    }
+    
+    .verification-box {
+      background: #f8f9fa;
+      border: 2px dashed #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+    
+    .interaction-area {
+      height: 120px;
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      position: relative;
+      margin-top: 15px;
+      overflow: hidden;
+    }
+    
+    .target-circle {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    
+    .target-circle:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(255, 77, 0, 0.5);
+    }
+    
+    .progress-indicator {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: var(--primary-color);
+      transition: width 0.3s;
+      width: 0%;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contact-section">
+    <div class="container">
+      <div class="row">
+        <!-- Contact Information -->
+        <div class="col-lg-5">
+          <div class="info-item text-center">
+            <i class="bi bi-geo-alt"></i>
+            <h3>Address</h3>
+            <p>22 KG 548 Street<br>Kacyiru, Kigali, Rwanda</p>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="info-item text-center">
+                <i class="bi bi-telephone"></i>
+                <h3>Call Us 24/7</h3>
+                <p><a href="tel:+250790099777">(+250) 790 099 777</a></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-item text-center">
+                <i class="bi bi-envelope"></i>
+                <h3>Email Us</h3>
+                <p><a href="mailto:itsupport@zubabroadband.com">itsupport@zubabroadband.com</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-lg-7">
+          <div class="contact-form">
+            <h3 class="mb-4">Send us a Message</h3>
+            
+            <!-- Status Messages -->
+            <div id="loading-message" class="alert alert-info">
+              <span class="spinner"></span> Sending your message...
+            </div>
+            <div id="error-message" class="alert alert-danger"></div>
+            <div id="success-message" class="alert alert-success">
+              <i class="bi bi-check-circle"></i> Your message has been sent successfully! We'll get back to you soon.
+            </div>
+            
+            <form id="contactForm" method="POST" action="https://formsubmit.co/itsupport@zubabroadband.com">
+              <!-- FormSubmit Configuration -->
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="https://zubabroadband.com/contact.html?success=1">
+              <input type="hidden" name="_subject" value="New Contact Form Submission - Zuba Broadband">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_cc" value="dadishimwe0@gmail.com">
+              
+              <!-- Tracking Fields -->
+              <input type="hidden" id="formTimestamp" name="_form_timestamp">
+              <input type="hidden" id="verificationScore" name="_verification_score">
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="text" 
+                         name="name" 
+                         class="form-control" 
+                         placeholder="Your Name *" 
+                         required
+                         pattern="^[A-Za-z\s'\-]{2,50}$"
+                         title="Please enter a valid name (2-50 characters)">
+                </div>
+                
+                <div class="col-md-6">
+                  <input type="email" 
+                         name="email" 
+                         class="form-control" 
+                         placeholder="Your Email *" 
+                         required
+                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                         title="Please enter a valid email address">
+                </div>
+              </div>
+              
+              <input type="tel" 
+                     name="phone" 
+                     class="form-control" 
+                     placeholder="Phone Number (Optional)"
+                     pattern="[\+]?[0-9]{10,15}">
+              
+              <input type="text" 
+                     name="subject" 
+                     class="form-control" 
+                     placeholder="Subject *" 
+                     required
+                     minlength="3"
+                     maxlength="100">
+              
+              <select name="department" class="form-select" required>
+                <option value="">Select Department *</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="Sales & New Connections">Sales & New Connections</option>
+                <option value="Billing & Accounts">Billing & Accounts</option>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Complaints">Complaints</option>
+              </select>
+              
+              <textarea name="message" 
+                        class="form-control" 
+                        rows="5" 
+                        placeholder="Your Message *" 
+                        required
+                        minlength="10"
+                        maxlength="1000"></textarea>
+              
+              <!-- Human Verification -->
+              <div class="verification-box">
+                <h5><i class="bi bi-shield-check"></i> Verify You're Human</h5>
+                <p class="mb-2">Click all the circles in order (1 → 5)</p>
+                <div class="interaction-area" id="interactionArea"></div>
+                <div class="progress-indicator">
+                  Progress: <span id="clickProgress">0/5</span>
+                  <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <button type="submit" class="submit-btn" id="submitBtn" disabled>
+                <i class="bi bi-send"></i> Send Message
+              </button>
+              
+              <p class="text-muted mt-3 mb-0" style="font-size: 12px;">
+                <i class="bi bi-info-circle"></i> Your information is secure and will only be used to respond to your inquiry.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Verification System
+    let verificationScore = 0;
+    let clickedCircles = 0;
+    const totalCircles = 5;
+    let startTime = Date.now();
+
+    // Initialize form
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('formTimestamp').value = new Date().toISOString();
+      initializeVerification();
+      checkURLForSuccess();
+    });
+
+    // Check if returning from successful submission
+    function checkURLForSuccess() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('success') === '1') {
+        showMessage('success', 'Your message has been sent successfully! We\'ll get back to you soon.');
+      }
+    }
+
+    // Initialize human verification
+    function initializeVerification() {
+      const area = document.getElementById('interactionArea');
+      const circles = [];
+      
+      for (let i = 1; i <= totalCircles; i++) {
+        const circle = document.createElement('div');
+        circle.className = 'target-circle';
+        circle.textContent = i;
+        circle.dataset.number = i;
+        circle.style.left = Math.random() * (area.offsetWidth - 40) + 'px';
+        circle.style.top = Math.random() * (area.offsetHeight - 40) + 'px';
+        
+        circle.addEventListener('click', function(e) {
+          e.preventDefault();
+          handleCircleClick(this);
+        });
+        
+        area.appendChild(circle);
+        circles.push(circle);
+      }
+    }
+
+    function handleCircleClick(circle) {
+      const clickedNumber = parseInt(circle.dataset.number);
+      const expectedNumber = clickedCircles + 1;
+      
+      if (clickedNumber === expectedNumber) {
+        circle.style.background = '#28a745';
+        circle.style.pointerEvents = 'none';
+        clickedCircles++;
+        verificationScore += 20;
+        
+        updateProgress();
+        
+        if (clickedCircles === totalCircles) {
+          completeVerification();
+        }
+      } else {
+        // Wrong order - shake animation
+        circle.style.animation = 'shake 0.3s';
+        setTimeout(() => circle.style.animation = '', 300);
+      }
+    }
+
+    function updateProgress() {
+      document.getElementById('clickProgress').textContent = `${clickedCircles}/${totalCircles}`;
+      const percentage = (clickedCircles / totalCircles) * 100;
+      document.getElementById('progressFill').style.width = percentage + '%';
+    }
+
+    function completeVerification() {
+      const timeSpent = (Date.now() - startTime) / 1000;
+      if (timeSpent > 5) verificationScore += 10; // Bonus for taking time
+      
+      document.getElementById('verificationScore').value = verificationScore;
+      document.getElementById('submitBtn').disabled = false;
+      
+      showMessage('success', '✓ Verification complete! You can now submit the form.');
+      setTimeout(() => hideMessage('success'), 3000);
+    }
+
+    // Form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      if (verificationScore < 80) {
+        e.preventDefault();
+        showMessage('error', 'Please complete the verification first.');
+        return false;
+      }
+      
+      // Show loading state
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+      showMessage('loading', '');
+      
+      // Form will submit naturally to FormSubmit.co
+      // User will be redirected back with success parameter
+    });
+
+    // Message display functions
+    function showMessage(type, text) {
+      hideAllMessages();
+      const messageId = type === 'loading' ? 'loading-message' : 
+                       type === 'error' ? 'error-message' : 'success-message';
+      const element = document.getElementById(messageId);
+      if (text) element.textContent = text;
+      element.classList.add('show');
+    }
+
+    function hideMessage(type) {
+      const messageId = type === 'loading' ? 'loading-message' : 
+                       type === 'error' ? 'error-message' : 'success-message';
+      document.getElementById(messageId).classList.remove('show');
+    }
+
+    function hideAllMessages() {
+      document.querySelectorAll('.alert').forEach(el => el.classList.remove('show'));
+    }
+
+    // Add shake animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
