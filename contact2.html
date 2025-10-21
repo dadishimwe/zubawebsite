@@ -207,7 +207,7 @@
               <div class="info-item text-center">
                 <i class="bi bi-envelope"></i>
                 <h3>Email Us</h3>
-                <p><a href="mailto:itsupport@zubabroadband.com">itsupport@zubabroadband.com</a></p>
+                <p><a href="#" id="emailLink" data-user="itsupport" data-domain="zubabroadband.com">Click to reveal</a></p>
               </div>
             </div>
           </div>
@@ -227,17 +227,19 @@
               <i class="bi bi-check-circle"></i> Your message has been sent successfully! We'll get back to you soon.
             </div>
             
-            <form id="contactForm" method="POST" action="https://formsubmit.co/itsupport@zubabroadband.com">
-              <!-- FormSubmit Configuration -->
+            <form id="contactForm" method="POST">
+              <!-- Form action will be set dynamically via JavaScript -->
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_next" value="https://zubabroadband.com/contact.html?success=1">
               <input type="hidden" name="_subject" value="New Contact Form Submission - Zuba Broadband">
               <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_cc" value="dadishimwe0@gmail.com">
               
               <!-- Tracking Fields -->
               <input type="hidden" id="formTimestamp" name="_form_timestamp">
               <input type="hidden" id="verificationScore" name="_verification_score">
+              
+              <!-- Honeypot for bots (hidden field) -->
+              <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
               
               <div class="row">
                 <div class="col-md-6">
@@ -320,18 +322,61 @@
   </div>
 
   <script>
+    // Email obfuscation - protects from scrapers
+    const emailParts = {
+      user: 'itsupport',
+      domain: 'zubabroadband',
+      tld: 'com',
+      ccUser: 'dadishimwe0',
+      ccDomain: 'gmail'
+    };
+
+    // Build email addresses dynamically
+    function getEmail(type = 'main') {
+      if (type === 'cc') {
+        return emailParts.ccUser + '@' + emailParts.ccDomain + '.' + emailParts.tld;
+      }
+      return emailParts.user + '@' + emailParts.domain + '.' + emailParts.tld;
+    }
+
+    // Set up email link with obfuscation
+    document.addEventListener('DOMContentLoaded', function() {
+      const emailLink = document.getElementById('emailLink');
+      const email = getEmail();
+      
+      emailLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.href = 'mailto:' + email;
+        this.textContent = email;
+        // After first click, make it work as normal mailto link
+        setTimeout(() => {
+          emailLink.addEventListener('click', function(e) {
+            window.location.href = this.href;
+          });
+        }, 100);
+      });
+      
+      // Set form action dynamically
+      const form = document.getElementById('contactForm');
+      form.action = 'https://formsubmit.co/' + email;
+      
+      // Add CC field dynamically
+      const ccInput = document.createElement('input');
+      ccInput.type = 'hidden';
+      ccInput.name = '_cc';
+      ccInput.value = getEmail('cc');
+      form.appendChild(ccInput);
+      
+      document.getElementById('formTimestamp').value = new Date().toISOString();
+      initializeVerification();
+      checkURLForSuccess();
+    });
+
     // Verification System
     let verificationScore = 0;
     let clickedCircles = 0;
     const totalCircles = 5;
     let startTime = Date.now();
-
-    // Initialize form
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('formTimestamp').value = new Date().toISOString();
-      initializeVerification();
-      checkURLForSuccess();
-    });
 
     // Check if returning from successful submission
     function checkURLForSuccess() {
@@ -411,6 +456,12 @@
         return false;
       }
       
+      // Check honeypot field
+      if (document.querySelector('input[name="_gotcha"]').value !== '') {
+        e.preventDefault();
+        return false;
+      }
+      
       // Show loading state
       const submitBtn = document.getElementById('submitBtn');
       submitBtn.disabled = true;
@@ -418,7 +469,6 @@
       showMessage('loading', '');
       
       // Form will submit naturally to FormSubmit.co
-      // User will be redirected back with success parameter
     });
 
     // Message display functions
