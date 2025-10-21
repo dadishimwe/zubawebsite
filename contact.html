@@ -94,7 +94,7 @@
     </div><!-- End Page Title -->
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section">
+    <!--<section id="contact" class="contact section">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -108,7 +108,7 @@
                   <h3 color="#181825">Address</h3>
                   <p color="#181825">22 KG 548 Street, Kacyiru, Kigali, Rwanda</p>
                 </div>
-              </div><!-- End Info Item -->
+              </div><!-- End Info Item --
 
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
@@ -116,7 +116,7 @@
                   <h3 color="#181825">Call Us: Online 24/7</h3>
                   <p><a href="tel:+250790099777" color="#181825" text-decoration="none">(+250) 790 099 777</a></p>
                 </div>
-              </div><!-- End Info Item -->
+              </div><!-- End Info Item --
 
               <div class="col-md-6">
                 <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
@@ -124,21 +124,21 @@
                   <h3>Email Us: Quick response</h3>
                   <p><a href="mailto:itsupport@zubabroadband.com" color="#181825" text-decoration="none">itsupport@zubabroadband.com</a></p>
                 </div>
-              </div><!-- End Info Item -->
+              </div><!-- End Info Item --
 
             </div>
           </div>
 
           <div class="col-lg-6">
             <form action="https://formsubmit.co/itsupport@zubabroadband.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="500" onsubmit="return validateForm()">
-    <!-- Existing configuration -->
+    <!-- Existing configuration --
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_next" value="https://zubabroadband.com/contact.html">
     <input type="hidden" name="_subject" value="New Contact Form Submission">
     <input type="hidden" name="_bcc" value="dadishimwe0@gmail.com">
     <input type="hidden" name="_template" value="table">
     
-    <!-- Enhanced tracking -->
+    <!-- Enhanced tracking --
     <input type="hidden" id="form-timestamp" name="timestamp">
     <input type="hidden" id="typing-patterns" name="typing_patterns">
     <input type="hidden" id="interaction-score" name="interaction_score">
@@ -357,7 +357,380 @@ function detectLanguageMismatch(subject, message) {
     
     return isEnglishSubject && hasNonEnglishChars;
 }
-</script>
+</script> -->
+  <div class="contact-section">
+    <div class="container">
+      <div class="row">
+        <!-- Contact Information -->
+        <div class="col-lg-5">
+          <div class="info-item text-center">
+            <i class="bi bi-geo-alt"></i>
+            <h3>Address</h3>
+            <p>22 KG 548 Street<br>Kacyiru, Kigali, Rwanda</p>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="info-item text-center">
+                <i class="bi bi-telephone"></i>
+                <h3>Call Us 24/7</h3>
+                <p><a href="tel:+250790099777">(+250) 790 099 777</a></p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-item text-center">
+                <i class="bi bi-envelope"></i>
+                <h3>Email Us</h3>
+                <p><a href="#" id="emailLink" data-user="itsupport" data-domain="zubabroadband.com">Click to reveal</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-lg-7">
+          <div class="contact-form">
+            <h3 class="mb-4">Send us a Message</h3>
+            
+            <!-- Status Messages -->
+            <div id="loading-message" class="alert alert-info">
+              <div class="d-flex align-items-center">
+                <span class="spinner me-2"></span>
+                <span>Sending your message... Please wait, do not refresh the page.</span>
+              </div>
+            </div>
+            <div id="error-message" class="alert alert-danger"></div>
+            <div id="success-message" class="alert alert-success">
+              <i class="bi bi-check-circle"></i> Your message has been sent successfully! We'll get back to you soon.
+            </div>
+            
+            <form id="contactForm" method="POST">
+              <!-- Form action will be set dynamically via JavaScript -->
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="https://zubabroadband.com/contact.html?success=1">
+              <input type="hidden" name="_subject" value="New Contact Form Submission - Zuba Broadband">
+              <input type="hidden" name="_template" value="table">
+              
+              <!-- Tracking Fields -->
+              <input type="hidden" id="formTimestamp" name="_form_timestamp">
+              <input type="hidden" id="verificationScore" name="_verification_score">
+              
+              <!-- Honeypot for bots (hidden field) -->
+              <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="text" 
+                         name="name" 
+                         class="form-control" 
+                         placeholder="Your Name *" 
+                         required
+                         pattern="^[A-Za-z\s'\-]{2,50}$"
+                         title="Please enter a valid name (2-50 characters)">
+                </div>
+                
+                <div class="col-md-6">
+                  <input type="email" 
+                         name="email" 
+                         class="form-control" 
+                         placeholder="Your Email *" 
+                         required
+                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                         title="Please enter a valid email address">
+                </div>
+              </div>
+              
+              <input type="tel" 
+                     name="phone" 
+                     class="form-control" 
+                     placeholder="Phone Number (Optional)"
+                     pattern="[\+]?[0-9]{10,15}">
+              
+              <input type="text" 
+                     name="subject" 
+                     class="form-control" 
+                     placeholder="Subject *" 
+                     required
+                     minlength="3"
+                     maxlength="100">
+              
+              <select name="department" class="form-select" required>
+                <option value="">Select Department *</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="Sales & New Connections">Sales & New Connections</option>
+                <option value="Billing & Accounts">Billing & Accounts</option>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Complaints">Complaints</option>
+              </select>
+              
+              <textarea name="message" 
+                        class="form-control" 
+                        rows="5" 
+                        placeholder="Your Message *" 
+                        required
+                        minlength="10"
+                        maxlength="1000"></textarea>
+              
+              <!-- Human Verification -->
+              <div class="verification-box">
+                <h5><i class="bi bi-shield-check"></i> Verify You're Human</h5>
+                <p class="mb-2">Click all the circles in order (1 → 5)</p>
+                <div class="interaction-area" id="interactionArea"></div>
+                <div class="progress-indicator">
+                  Progress: <span id="clickProgress">0/5</span>
+                  <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                  </div>
+                </div>
+              </div>
+              
+              <button type="submit" class="submit-btn" id="submitBtn" disabled>
+                <i class="bi bi-send"></i> Send Message
+              </button>
+              
+              <p class="text-muted mt-3 mb-0" style="font-size: 12px;">
+                <i class="bi bi-info-circle"></i> Your information is secure and will only be used to respond to your inquiry.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Email obfuscation - protects from scrapers
+    const emailParts = {
+      user: 'sales',
+      domain: 'zubabroadband',
+      tld: 'com',
+      ccUser: 'itsupport',
+      ccDomain: 'zubabroadband'
+    };
+
+    // Build email addresses dynamically
+    function getEmail(type = 'main') {
+      if (type === 'cc') {
+        return emailParts.ccUser + '@' + emailParts.ccDomain + '.' + emailParts.tld;
+      }
+      return emailParts.user + '@' + emailParts.domain + '.' + emailParts.tld;
+    }
+
+    // Set up email link with obfuscation
+    document.addEventListener('DOMContentLoaded', function() {
+      const emailLink = document.getElementById('emailLink');
+      const email = getEmail();
+      
+      emailLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.href = 'mailto:' + email;
+        this.textContent = email;
+        // After first click, make it work as normal mailto link
+        setTimeout(() => {
+          emailLink.addEventListener('click', function(e) {
+            window.location.href = this.href;
+          });
+        }, 100);
+      });
+      
+      // Set form action dynamically
+      const form = document.getElementById('contactForm');
+      form.action = 'https://formsubmit.co/' + email;
+      
+      // Add CC field dynamically
+      const ccInput = document.createElement('input');
+      ccInput.type = 'hidden';
+      ccInput.name = '_cc';
+      ccInput.value = getEmail('cc');
+      form.appendChild(ccInput);
+      
+      document.getElementById('formTimestamp').value = new Date().toISOString();
+      initializeVerification();
+      checkURLForSuccess();
+    });
+
+    // Verification System
+    let verificationScore = 0;
+    let clickedCircles = 0;
+    const totalCircles = 5;
+    let startTime = Date.now();
+
+    // Check if returning from successful submission
+    function checkURLForSuccess() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('success') === '1') {
+        showMessage('success', 'Your message has been sent successfully! We\'ll get back to you soon.');
+      }
+    }
+
+    // Initialize human verification with collision detection
+    function initializeVerification() {
+      const area = document.getElementById('interactionArea');
+      const circles = [];
+      const positions = [];
+      const circleSize = 30;
+      const minDistance = 45; // Minimum distance between circles to prevent overlap
+      
+      function isPositionValid(x, y) {
+        // Check boundaries
+        if (x < 5 || x > area.offsetWidth - circleSize - 5 ||
+            y < 5 || y > area.offsetHeight - circleSize - 5) {
+          return false;
+        }
+        
+        // Check distance from other circles
+        for (let pos of positions) {
+          const distance = Math.sqrt(Math.pow(x - pos.x, 2) + Math.pow(y - pos.y, 2));
+          if (distance < minDistance) {
+            return false;
+          }
+        }
+        return true;
+      }
+      
+      function getRandomPosition() {
+        let attempts = 0;
+        const maxAttempts = 100;
+        
+        while (attempts < maxAttempts) {
+          const x = Math.random() * (area.offsetWidth - circleSize - 10) + 5;
+          const y = Math.random() * (area.offsetHeight - circleSize - 10) + 5;
+          
+          if (isPositionValid(x, y)) {
+            return { x, y };
+          }
+          attempts++;
+        }
+        
+        // Fallback: distribute evenly if random placement fails
+        const index = positions.length;
+        return {
+          x: (index * 60) % (area.offsetWidth - circleSize),
+          y: Math.floor(index * 60 / area.offsetWidth) * 60
+        };
+      }
+      
+      for (let i = 1; i <= totalCircles; i++) {
+        const pos = getRandomPosition();
+        positions.push(pos);
+        
+        const circle = document.createElement('div');
+        circle.className = 'target-circle';
+        circle.textContent = i;
+        circle.dataset.number = i;
+        circle.style.left = pos.x + 'px';
+        circle.style.top = pos.y + 'px';
+        circle.style.zIndex = i; // Ensure proper stacking
+        
+        circle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          handleCircleClick(this);
+        });
+        
+        area.appendChild(circle);
+        circles.push(circle);
+      }
+    }
+
+    function handleCircleClick(circle) {
+      const clickedNumber = parseInt(circle.dataset.number);
+      const expectedNumber = clickedCircles + 1;
+      
+      if (clickedNumber === expectedNumber) {
+        circle.style.background = '#28a745';
+        circle.style.pointerEvents = 'none';
+        clickedCircles++;
+        verificationScore += 20;
+        
+        updateProgress();
+        
+        if (clickedCircles === totalCircles) {
+          completeVerification();
+        }
+      } else {
+        // Wrong order - shake animation
+        circle.style.animation = 'shake 0.3s';
+        setTimeout(() => circle.style.animation = '', 300);
+      }
+    }
+
+    function updateProgress() {
+      document.getElementById('clickProgress').textContent = `${clickedCircles}/${totalCircles}`;
+      const percentage = (clickedCircles / totalCircles) * 100;
+      document.getElementById('progressFill').style.width = percentage + '%';
+    }
+
+    function completeVerification() {
+      const timeSpent = (Date.now() - startTime) / 1000;
+      if (timeSpent > 5) verificationScore += 10; // Bonus for taking time
+      
+      document.getElementById('verificationScore').value = verificationScore;
+      document.getElementById('submitBtn').disabled = false;
+      
+      showMessage('success', '✓ Verification complete! You can now submit the form.');
+      setTimeout(() => hideMessage('success'), 3000);
+    }
+
+    // Form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      if (verificationScore < 80) {
+        e.preventDefault();
+        showMessage('error', 'Please complete the verification first.');
+        return false;
+      }
+      
+      // Check honeypot field
+      if (document.querySelector('input[name="_gotcha"]').value !== '') {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Show loading state immediately
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+      showMessage('loading', '');
+      
+      // Disable all form inputs to prevent changes during submission
+      const formInputs = this.querySelectorAll('input, textarea, select, button');
+      formInputs.forEach(input => input.disabled = true);
+      
+      // Form will submit naturally to FormSubmit.co
+      // The page will redirect, but in case of any delay, keep button disabled
+    });
+
+    // Message display functions
+    function showMessage(type, text) {
+      hideAllMessages();
+      const messageId = type === 'loading' ? 'loading-message' : 
+                       type === 'error' ? 'error-message' : 'success-message';
+      const element = document.getElementById(messageId);
+      if (text) element.textContent = text;
+      element.classList.add('show');
+    }
+
+    function hideMessage(type) {
+      const messageId = type === 'loading' ? 'loading-message' : 
+                       type === 'error' ? 'error-message' : 'success-message';
+      document.getElementById(messageId).classList.remove('show');
+    }
+
+    function hideAllMessages() {
+      document.querySelectorAll('.alert').forEach(el => el.classList.remove('show'));
+    }
+
+    // Add shake animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
 
   </main>
 
